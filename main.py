@@ -23,17 +23,35 @@ These FOUR friends would do anything to gain their rightful place as FOUR heroes
 
 In the end, the Order of the Stone emerged victorious, and the dragon was defeated. Their story complete, they slipped away into the pages of legend...
 
-But when one story ends, another one begins...\n\n'''
+But when one story ends, another one begins...\n\n\n\n'''
+
+
+def player_death(reason):
+
+	print(f"{reason}. Better luck next time.")
+	#prints reason for death
+	while True:
+
+		give_up = input("Do you give up? (y/n) ")
+		if give_up == "y":
+			print("Alright. Seeya")
+			time.sleep(2.0)
+			exit(0)
+		elif give_up == "n":
+			print("Nice, get back here.")
+			time.sleep(2.0)
+			load_game()
 
 
 
 def chapter_1_part_1():
+	
 	os.system('clear')
 	print(intro_speech)
 	time.sleep(15.0)
 	
 	while True:
-		zombieorchicken = input("Your name is Jesse. You're in a treehouse that you and your only friends live in. It's made of oak and spruce wood, with red carpeting. As you're slashing at an armour stand practicing your sword fighting skills, your good friend Olivia holds a small piece of redstone and peeks out the window.\n\nOlivia: 'Would you rather fight one hundred chicken-sized zombies, or ten zombie-sized chickens? Just to be clear, you wouldn't have any weapons or armor. So you'd have to fight them with your hands.' \n\n[1: 'Huh?' 2: 'Chicken-sized zombies.' 3: 'Zombie-sized chickens.' 4: '...'] ")
+		zombieorchicken = input("Your name is Jesse. You're in a treehouse that you and your only friends live in. It's made of oak and spruce wood, with red carpeting. As you're slashing at an armour stand practicing your sword fighting skills, your good friend Olivia holds a small piece of redstone and peeks out the window.\n\nOlivia: 'Would you rather fight a hundred chicken-sized zombies, or ten zombie-sized chickens? Just to be clear, you wouldn't have any weapons or armor. So you'd have to fight them with your hands.' \n\n[1: 'Huh?' 2: 'Chicken-sized zombies.' 3: 'Zombie-sized chickens.' 4: '...'] ")
 		if zombieorchicken == "1":
 			print("\n'Huh?'")
 			time.sleep(4.0)
@@ -141,7 +159,7 @@ def chapter_1_part_1():
 			time.sleep(4.0)
 			print("\nOlivia laughs")
 			time.sleep(4.0)
-			print("\nOlivia: All right, fine.")
+			print("\nOlivia: 'All right, fine.''")
 			break
 	time.sleep(4.0)
 	print("\n???: 'Ssssssss...'")
@@ -165,6 +183,10 @@ def chapter_1_part_1():
 	while True:
 		axel_intro = input("\nAxel: 'I thought we were buddies.' He looks down at Reuben. \n\n[1: 'Cool mask.' 2: 'You had that coming.' 3: 'Not funny, Axel.' 4: '...'] ")
 		break
+		#if axel_intro == "1":
+		#elif axel_intro == "2":
+		#elif axel_intro == "3":
+		#elif axel_intro == "4":
 
 #CHAPTER 1 PART 1
 
@@ -229,13 +251,15 @@ while True:
 			elif sure == "n":
 				print("Alright, I'll ask again\n\n")
 				continue
-		print("Alright, you'll start from where you left off, toodles!")
+		print("Alright, you'll start from where you left off, mine ya later!")
 
-f = open(save+".json")
-load = json.load(f)
-if load["episode"] == {"episode" : 1}:
-	if load["part"] == {"part" : 1}:
-		chapter_1_part_1()
-		place = {}
-		place["episode"] = {"episode" : 1}
-		place["part"] = {"part" : 1}
+load_game()
+def load_game():
+	f = open(save+".json")
+	load = json.load(f)
+	if load["episode"] == {"episode" : 1}:
+		if load["part"] == {"part" : 1}:
+			chapter_1_part_1()
+			place = {}
+			place["episode"] = {"episode" : 1}
+			place["part"] = {"part" : 1}
