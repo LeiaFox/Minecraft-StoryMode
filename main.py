@@ -2,6 +2,17 @@ import json
 import os
 import time
 
+def load_game():
+	f = open(save+".json")
+	load = json.loads(f.read)	
+	if f["episode"] == {"episode" : 1}:
+		if f["part"] == {"part" : 1}:
+			chapter_1_part_1()
+			place = {}
+			place["episode"] = {"episode" : 1}
+			place["part"] = {"part" : 1}
+#places you at the part you were at, or at the start
+
 intro_speech = '''
 Nothing built can last forever.
 
@@ -51,7 +62,7 @@ def chapter_1_part_1():
 	time.sleep(15.0)
 	
 	while True:
-		zombieorchicken = input("Your name is Jesse. You're in a treehouse that you and your only friends live in. It's made of oak and spruce wood, with red carpeting. As you're slashing at an armour stand practicing your sword fighting skills, your good friend Olivia holds a small piece of redstone and peeks out the window.\n\nOlivia: 'Would you rather fight a hundred chicken-sized zombies, or ten zombie-sized chickens? Just to be clear, you wouldn't have any weapons or armor. So you'd have to fight them with your hands.' \n\n[1: 'Huh?' 2: 'Chicken-sized zombies.' 3: 'Zombie-sized chickens.' 4: '...'] ")
+		zombieorchicken = input("Your name is Jesse. You're a treehouse that you and your only friends live in. It's made of oak and spruce wood, with red carpeting. As you're slashing at an armour stand practicing your sword fighting skills, your good friend Olivia holds a small piece of redstone and peeks out the window.\n\nOlivia: 'Would you rather fight a hundred chicken-sized zombies, or ten zombie-sized chickens? Just to be clear, you wouldn't have any weapons or armor. So you'd have to fight them with your hands.' \n\n[1: 'Huh?' 2: 'Chicken-sized zombies.' 3: 'Zombie-sized chickens.' 4: '...'] ")
 		if zombieorchicken == "1":
 			print("\n'Huh?'")
 			time.sleep(4.0)
@@ -243,23 +254,11 @@ while True:
 			sure = input("\nAre you sure about this (y/n)?").lower()
 
 			if sure == "y":
-				open(save+".json", "x")
-				with open(save+".json", 'w') as f:
-					f = open(save+".json")
-					load = json.load(f)
 				break
 			elif sure == "n":
 				print("Alright, I'll ask again\n\n")
 				continue
 		print("Alright, you'll start from where you left off, mine ya later!")
+		break
 
 load_game()
-def load_game():
-	f = open(save+".json")
-	load = json.load(f)
-	if load["episode"] == {"episode" : 1}:
-		if load["part"] == {"part" : 1}:
-			chapter_1_part_1()
-			place = {}
-			place["episode"] = {"episode" : 1}
-			place["part"] = {"part" : 1}
