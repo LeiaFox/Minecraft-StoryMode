@@ -4,9 +4,9 @@ import time
 
 def load_game():
 	f = open(save+".json")
-	load = json.loads(f.read)	
-	if f["episode"] == {"episode" : 1}:
-		if f["part"] == {"part" : 1}:
+	load = json.loads(f.read())	
+	if load["episode"] == {"episode" : 1}:
+		if load["part"] == {"part" : 1}:
 			chapter_1_part_1()
 			place = {}
 			place["episode"] = {"episode" : 1}
@@ -151,7 +151,7 @@ def chapter_1_part_1():
 	print("\nOlivia: 'I just don't want to give people one more reason to call us ''losers.'' '")
 	time.sleep(4.0)
 	while True:
-		losers = input("\nOlivia: 'I'm getting tired of it.'\n\nOlivia: 'I'm tired of being a laughing stock.' \n\n[1: 'Who cares?' 2: 'Embrace it.' 3: 'It's not weird at all.' 4: '...'] ")
+		losers = input("\nOlivia: 'I'm getting tired of it.'\n\nOlivia: 'I'm tired of being a laughing stock.' \n\n[1: 'Who cares?' 2: 'Embrace it.' 3: '*unfinished*' 4: '...'] ")
 		if losers == "1":
 			print("\n'Who cares what other people think?' *Olivia will remember that.*")
 			time.sleep(4.0)
@@ -170,8 +170,16 @@ def chapter_1_part_1():
 			time.sleep(4.0)
 			print("\nOlivia laughs")
 			time.sleep(4.0)
-			print("\nOlivia: 'All right, fine.''")
+			print("\nOlivia: 'All right, fine.'")
 			break
+		#elif losers == "3":
+		elif losers == "4":
+			print("\n'...''")
+			time.sleep(4.0)
+			print("\nOlivia: '...Real nice Jesse.'")
+			time.sleep(4.0)
+			print("\nOlivia: 'Glad I have a friend like you around.' She says this while unamused")
+
 	time.sleep(4.0)
 	print("\n???: 'Ssssssss...'")
 	time.sleep(4.0)
@@ -192,7 +200,7 @@ def chapter_1_part_1():
 	print("\nAxel: 'Great, now I'm going to smell like a pig at Endercon.'")
 	time.sleep(4.0)
 	while True:
-		axel_intro = input("\nAxel: 'I thought we were buddies.' He looks down at Reuben. \n\n[1: 'Cool mask.' 2: 'You had that coming.' 3: 'Not funny, Axel.' 4: '...'] ")
+		axel_intro = input("\nAxel: 'I thought we were buddies.' He looks down at Reuben. \n\n[1: 'Cool mask.' 2: 'You had that coming.' 3: 'Not funny, Axel.' 4: '...'] *unfinished*")
 		break
 		#if axel_intro == "1":
 		#elif axel_intro == "2":
@@ -248,7 +256,7 @@ while True:
 		time.sleep(1.5)
 		break
 	elif saveorload == "load":
-		print("Oops! This is still a work in progress, and since there's so little done right now loading is a little pointless right now!")
+		print("*WARNING* this is still a WIP, so loading doesn't do much since there's only a small percent of the full game complete")
 		while True:
 			save = input("What was the name of your save file?	")
 			sure = input("\nAre you sure about this (y/n)?").lower()
