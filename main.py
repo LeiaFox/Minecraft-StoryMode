@@ -254,7 +254,6 @@ while True:
 
 		print("\nAlright, You adventure will start... NOW!")
 		time.sleep(1.5)
-		break
 	elif saveorload == "load":
 		print("*WARNING* this is still a WIP, so loading doesn't do much since there's only a small percent of the full game complete")
 		while True:
@@ -267,6 +266,5 @@ while True:
 				print("Alright, I'll ask again\n\n")
 				continue
 		print("Alright, you'll start from where you left off, mine ya later!")
-		break
+	load_game()
 
-load_game()
