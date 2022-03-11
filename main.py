@@ -11,16 +11,21 @@ olivia2 = colored("Olivia","red")
 axel = colored("\nAxel:","green")
 
 def load_game():
+	
 	global f
 	global place
 	global load
 	f = open(save+".json")
-	load = json.loads(f.read())	
-	if load["episode"] == {"episode" : 1}:
-		if load["part"] == {"part" : 1}:
+	load = json.loads(f.read())
+	if load["episode"] == 1:
+		if load["part"] == 1:
 			place = {}
-			place["episode"] = {"episode" : 1}
-			place["part"] = {"part" : 1}
+			place["zombiesizedchicken"] = load["zombiesizedchicken"]
+			place["chickensizedzombie"] = load["chickensizedzombie"]
+			place["episode"] = 1
+			place["part"] = 1
+			with open(save+".json", 'w') as f:
+				json.dump(place, f)
 			chapter_1_part_1()
 #places you at the part you were at, or at the start
 
@@ -78,7 +83,7 @@ def chapter_1_part_1():
 	while True:
 		print("Your name is Jesse. You're a treehouse that you and your only friends live in. It's made of oak and spruce wood, with red carpeting and spruce pillars in the corners. As you're slashing at an armour stand practicing your sword fighting skills, your good friend Olivia holds a small piece of redstone and peeks out the window.\n")
 		time.sleep(8.0)
-		zombieorchicken = input(olivia,"'Would you rather fight a hundred chicken-sized zombies, or ten zombie-sized chickens? Just to be clear, you wouldn't have any weapons or armor. So you'd have to fight them with your hands.' \n\n[1: 'Huh?' 2: 'Chicken-sized zombies.' 3: 'Zombie-sized chickens.' 4: '...'] ")
+		zombieorchicken = input(f"{olivia} 'Would you rather fight a hundred chicken-sized zombies, or ten zombie-sized chickens? Just to be clear, you wouldn't have any weapons or armor. So you'd have to fight them with your hands.' \n\n[1: 'Huh?' 2: 'Chicken-sized zombies.' 3: 'Zombie-sized chickens.' 4: '...'] ")
 		if zombieorchicken == "1":
 			print("\n'Huh?'")
 			time.sleep(4.0)
@@ -87,8 +92,8 @@ def chapter_1_part_1():
 			print(olivia,"'It's just a dumb question. Forget it.'")
 			break
 		elif zombieorchicken == "2":
-			place["zombiesizedchicken"]={"zombiesizedchicken" : 0}
-			place["chickensizedzombie"]={"chickensizedzombie" : 1}
+			place["zombiesizedchicken"]=0
+			place["chickensizedzombie"]=1
 			with open(save+".json", 'w') as f:
 				json.dump(place, f)
 			print("\n'That's easy. I'll take the little tiny... little zombies.'")
@@ -98,8 +103,8 @@ def chapter_1_part_1():
 			print("\n'All I'd need is, like, a shovel. I'm telling you, way too easy.'")
 			break
 		elif zombieorchicken == "3":
-			place["zombiesizedchicken"]={"zombiesizedchicken" : 1}
-			place["chickensizedzombie"]={"chickensizedzombie" : 0}
+			place["zombiesizedchicken"]=1
+			place["chickensizedzombie"]=0
 			with open(save+".json", 'w') as f:
 				json.dump(place, f)
 			print("\n'I'd have to go with the giant chickens. Not because I want to or because I think it would be easy, but because they would be an abomination.'")
@@ -133,7 +138,7 @@ def chapter_1_part_1():
 	print(olivia,"'Okay. I'm not saying he shouldn't come. I'm not... but don't you think it's a little weird that you take him with you everywhere you go?'")
 	time.sleep(4.0)
 	while True:
-		reubenchoice = input(olivia,"'He kind of makes us look like... I don't know... amateurs.' \n\n[1: 'Reuben's my best friend.' 2: 'People love pigs!' 3: 'It's not weird at all.' 4: '...'] ")
+		reubenchoice = input(f"{olivia} 'He kind of makes us look like... I don't know... amateurs.' \n\n[1: 'Reuben's my best friend.' 2: 'People love pigs!' 3: 'It's not weird at all.' 4: '...'] ")
 		if reubenchoice == "1":
 			print("\n'Reuben's my best friend.'")
 			time.sleep(4.0)
@@ -169,47 +174,47 @@ def chapter_1_part_1():
 	print(olivia,"'I'm getting tired of it.'")
 	time.sleep(4.0)
 	while True:
-		losers = input(f"{olivia}'I'm tired of being a laughing stock.' \n\n[1: 'Who cares what they think?' 2: 'Just embrace it.' 3: 'We aren't losers.' 4: '...'] ")
+		losers = input(f"{olivia} 'I'm tired of being a laughing stock.' \n\n[1: 'Who cares what they think?' 2: 'Just embrace it.' 3: 'We aren't losers.' 4: '...'] ")
 		if losers == "1":
 			print("\n'Who cares what other people think?' *Olivia will remember that.*")
 			time.sleep(4.0)
-			print(f"{olivia}'I know, I know. I'm just... it wears you down.' she slumps over")
+			print(f"{olivia} 'I know, I know. I'm just... it wears you down.' she slumps over")
 			time.sleep(4.0)
 			print("\n'You say you're not a loser, Olivia... so win.'")
 			time.sleep(4.0)
-			print(f"{olivia}'Okay. Fine.' She grins.")
+			print(f"{olivia} 'Okay. Fine.' She grins.")
 			break
 		elif losers == "2":
 			print("\n'Embrace being a loser, Olivia. And if you do that, you can be whatever you want to be.'")
 			time.sleep(4.0)
-			print(f"{olivia}'What if I wanna be a winner?'")
+			print(f"{olivia} 'What if I wanna be a winner?'")
 			time.sleep(4.0)
 			print("\n'Except that.' You let out an unsure giggle, 'Anything else though.'")
 			time.sleep(4.0)
-			print(f"\n{colored("Olivia","red")} laughs")
+			print(f"\n{olivia2} laughs")
 			time.sleep(4.0)
-			print(f"{olivia}'All right, fine.'")
+			print(f"{olivia} 'All right, fine.'")
 			break
 		elif losers == "3":
 			time.sleep(4.0)
 			print("\n'We are not loser, Olivia'")
 			time.sleep(4.0)
-			print(f"{olivia}'We lose all the time. It's what we do.'")
+			print(f"{olivia} 'We lose all the time. It's what we do.'")
 			time.sleep(4.0)
 			print("\n'Okay... Okay! That might be true...'")
 			time.sleep(4.0)
-			print(f"{olivia}'I can't remember the last time we've won anything.'")
+			print(f"{olivia} 'I can't remember the last time we've won anything.'")
 			time.sleep(4.0)
 			print("\n'But if that's the case... it means we win at being losers.'")
 			time.sleep(4.0)
-			print(f"{olivia}'...All right, fine'")
+			print(f"{olivia} '...All right, fine'")
 			break
 		elif losers == "4":
 			print("\n'...''")
 			time.sleep(4.0)
-			print(f"{olivia}'...Real nice Jesse.'")
+			print(f"{olivia} '...Real nice Jesse.'")
 			time.sleep(4.0)
-			print(f"{olivia}'Glad I have a friend like you around.' She says this while unamused and blankly staring")
+			print(f"{olivia} 'Glad I have a friend like you around.' She says this while unamused and blankly staring")
 			break
 
 	time.sleep(4.0)
@@ -219,28 +224,28 @@ def chapter_1_part_1():
 	time.sleep(4.0)
 	print("\n???: 'Sssssssssssss...'")
 	time.sleep(4.0)
-	print(f"{olivia}'Oh, no.' You kneel down about to open the trapdoor.")
+	print(f"{olivia} 'Oh, no.' You kneel down about to open the trapdoor.")
 	time.sleep(4.0)
 	print("\n???: 'BOO'")
 	time.sleep(4.0)
 	print(f"\nYou and {olivia2}: 'AHHH!' Reuben falls over onto the floor out of fear.")
 	time.sleep(4.0)
-	print(f"{axel}'Ha! I totally freaked all of you out! That was awso- Ow!' Reuben has just rammed into Axel's stomach.")
+	print(f"{axel} 'Ha! I totally freaked all of you out! That was awso- Ow!' Reuben has just rammed into Axel's stomach.")
 	time.sleep(4.0)
-	print(f"{olivia}'Axel! What's the matter with you?!'")
+	print(f"{olivia} 'Axel! What's the matter with you?!'")
 	time.sleep(4.0)
-	print(f"{axel}'Great, now I'm going to smell like a pig at Endercon.'")
+	print(f"{axel} 'Great, now I'm going to smell like a pig at Endercon.'")
 	time.sleep(4.0)
 	while True:
-		axel_intro = input(f"{axel}'I thought we were buddies!' He looks down at Reuben. \n\n[1: 'Cool mask.' 2: 'You had that coming.' 3: 'Not funny, Axel.' 4: '...'] *unfinished*")
+		axel_intro = input(f"{axel} 'I thought we were buddies!' He looks down at Reuben. \n\n[1: 'Cool mask.' 2: 'You had that coming.' 3: 'Not funny, Axel.' 4: '...'] *unfinished*")
 		if axel_intro == "1":
 			print("\n'Cool mask.'")
 			time.sleep(4.0)
-			print(f"{axel}'It is, isn't it?' *Axel will remember that*")
+			print(f"{axel} 'It is, isn't it?' *Axel will remember that*")
 			time.sleep(4.0)
 			print("\n'Yeah, very convincing.' You put you hands on your hips and glare at Axel in a disaproving matter.")
 			time.sleep(4.0)
-			print(f"{axel}'The look on your faces...' Axel laughs.")
+			print(f"{axel} 'The look on your faces...' Axel laughs.")
 			break
 		elif axel_intro == "2":
 			break
@@ -249,16 +254,26 @@ def chapter_1_part_1():
 		elif axel_intro == "4":
 			break
 	time.sleep(4.0)
-	print(f"{olivia}Did you bring the fireworks?'")
+	print(f"{olivia} 'Did you bring the fireworks?'")
 	time.sleep(4.0)
-	print(f"{axel}'Of course I did. I even brought something for the little guy' Axel pulls out a pig-sized ender dragon costume, perfect for Reuben.")
+	print(f"{axel} 'Of course I did. I even brought something for the little guy' Axel pulls out a pig-sized ender dragon costume, perfect for Reuben.")
 	time.sleep(4.0)
 	print("\n'Nice!'")
 	time.sleep(4.0)
-	print(f"{olivia}'You brought Reuben a disguise?'")
+	print(f"{olivia} 'You brought Reuben a disguise?'")
 	time.sleep(4.0)
-	print(f"{axel}'We're going to a convention. SOMEbody's gotta wear a costume.' Axel stuffs the costume onto Reuben, Reuben runs around in enjoyment.")
+	print(f"{axel} 'We're going to a convention. SOMEbody's gotta wear a costume.' Axel stuffs the costume onto Reuben, Reuben runs around in enjoyment.")
 	time.sleep(4.0)
+	while True:
+		reuben_looks = input(f"[1: 'If he's happy, I'm happy.' 2: 'He looks awesome!' 3: 'He looks ridiculous.' 4: '...']")
+		if reuben_looks = "1":
+			break
+		elif reuben_looks = "2":
+			break
+		elif reuben_looks = "3":
+			break
+		elif reuben_looks = "4":
+			break
 	exit(0)
 #CHAPTER 1 PART 1
 
@@ -290,8 +305,8 @@ while True:
 			continue
 	if saveorload == "start":
 		place = {}
-		place["episode"] = {"episode" : 1}
-		place["part"] = {"part" : 1}
+		place["episode"] = 1
+		place["part"] = 1
 		while True:
 			save = input("\n\nWhat do you want to name your save file (if it already exists an error will show if you enter it here)?	")
 			sure = input("\nAre you sure about this (y/n)?").lower()
@@ -310,14 +325,14 @@ while True:
 	elif saveorload == "load":
 		print("*WARNING* this is still a WIP, so loading doesn't do much since there's only a small percent of the full game complete")
 		while True:
-			save = input("What was the name of your save file?	")
-			sure = input("\nAre you sure about this (y/n)?").lower()
+			save = input("What was the name of your save file?  ")
+			sure = input("\nAre you sure about this (y/n)?  ").lower()
 
 			if sure == "y":
 				break
 			elif sure == "n":
 				print("Alright, I'll ask again\n\n")
 				continue
-		print("Alright, you'll start from where you left off, mine ya later!")
+		print("\nAlright, you'll start from where you left off, mine ya later!")
 		time.sleep(2.0)
 	load_game()
