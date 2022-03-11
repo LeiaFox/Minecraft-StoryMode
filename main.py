@@ -250,6 +250,11 @@ def chapter_1_part_1():
 		elif axel_intro == "2":
 			break
 		elif axel_intro == "3":
+			print("\n'That wasn't funny Axel!' You point at him dissaprovingly.")
+			time.sleep(4.0)
+			print(f"{axel} 'I brought you good times, and now I'm being punished for it? He waves his hands around in lashing anger. *Axel will remember that.*'")
+			time.sleep(4.0)
+			print(f"\n'You scared us half to death.' You lash out and throw your arms behind you to exaggerate your message.")
 			break
 		elif axel_intro == "4":
 			break
@@ -267,6 +272,7 @@ def chapter_1_part_1():
 	while True:
 		reuben_looks = input(f"[1: 'If he's happy, I'm happy.' 2: 'He looks awesome!' 3: 'He looks ridiculous.' 4: '...']")
 		if reuben_looks = "1":
+			print("\n'As long as Reuben's happy, I'm happy.' Reuben is joyfully dashing around the room in his awesome dragon costume")
 			break
 		elif reuben_looks = "2":
 			break
