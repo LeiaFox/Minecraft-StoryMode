@@ -11,22 +11,37 @@ olivia2 = colored("Olivia","red")
 axel = colored("\nAxel:","green")
 reuben = colored("\nReuben:","magenta")
 
+
+
 #places you at the part you were at, or at the start
 def load_game():
 	global f
 	global place
 	global load
-	f = open(save+".json")
-	load = json.loads(f.read())
+	global loadinv
+	global inventory
+	global fread
+	global f2read
+	
+	f = open(save + "/" + save + ".json", 'w')
+	f2 = open(save + "/inventory.json", 'w')
+	fread = open(save + "/" + save + ".json")
+	f2read = open(save + "/inventory.json")
+
+	filesize = (os.path.getsize(save + "/" + save + ".json") + os.path.getsize(save + "/inventory.json"))
+	if filesize != 0:
+		load = json.loads(fread.read())
+		loadinv = json.loads(f2read.read())
+	
 	if load["episode"] == 1:
 		if load["part"] == 1:
+			inventory = loadinv
 			place = {}
 			place["episode"] = 1
 			place["part"] = 1			
 			place["zombiesizedchicken"] = load["zombiesizedchicken"]
 			place["chickensizedzombie"] = load["chickensizedzombie"]
-			with open(save+".json", 'w') as f:
-				json.dump(place, f)
+			json.dump(place, f)
 			chapter_1_part_1()
 
 
@@ -95,7 +110,7 @@ def chapter_1_part_1():
 		elif zombieorchicken == "2":
 			place["zombiesizedchicken"]=0
 			place["chickensizedzombie"]=1
-			with open(save+".json", 'w') as f:
+			with open(save + "/" + save + ".json", 'w') as f:
 				json.dump(place, f)
 			print("\n'That's easy. I'll take the little tiny... little zombies.'")
 			time.sleep(4.0)
@@ -106,7 +121,7 @@ def chapter_1_part_1():
 		elif zombieorchicken == "3":
 			place["zombiesizedchicken"]=1
 			place["chickensizedzombie"]=0
-			with open(save+".json", 'w') as f:
+			with open(save + "/" + save + ".json", 'w') as f:
 				json.dump(place, f)
 			print("\n'I'd have to go with the giant chickens. Not because I want to or because I think it would be easy, but because they would be an abomination.'")
 			time.sleep(4.0)
@@ -260,7 +275,7 @@ def chapter_1_part_1():
 		elif axel_intro == "3":
 			print("\n'That wasn't funny Axel!' You point at him dissaprovingly.")
 			time.sleep(4.0)
-			print(f"{axel} 'I brought you good times, and now I'm being punished for it? He waves his hands around in lashing anger. *Axel will remember that.*'")
+			print(f"{axel} 'I brought you good times, and now I'm being punished for it? He waves his hands around in lashing anger.' *Axel will remember that.*")
 			time.sleep(4.0)
 			print(f"\n'You scared us half to death.' You lash out and throw your arms behind you to exaggerate your message.")
 			time.sleep(4.0)
@@ -314,10 +329,10 @@ def chapter_1_part_1():
 		if grabbing_stuff == "1":
 			print("\nYou walk up to the chest and begin scrambling inside. 'Hm. Flint and steel, not too shabby'")
 			time.sleep(4.0)
-			place["inventory"] = "Flint and Steel"
-			place["inventory"].append("Diamond!!!!")
-			with open(save+".json", 'w') as f:
-				json.dump(place, f)
+
+			inventory.update({"flint_and_steel" : 1})
+			json.dump(inventory, f2)
+			
 			continue
 		elif grabbing_stuff == "2":
 			print("\nYou walk up to the banner. 'Gabriel the warror. You think we'll ever get that famous?' you turn to look at Reuben")
@@ -338,8 +353,7 @@ def chapter_1_part_1():
 			time.sleep(4.0)
 			continue
 		elif grabbing_stuff == "E":
-			palce = place["inventory"]
-			print(f"\nInventory:\n{palce}")
+			print(f"\nInventory:\n{inventory}")
 			print(f"\n\nplaceholder\n{place}")
 	exit(0)
 #CHAPTER 1 PART 1
@@ -374,15 +388,21 @@ while True:
 		place = {}
 		place["episode"] = 1
 		place["part"] = 1
+		inventory = {}
 		while True:
 			save = input("\n\nWhat do you want to name your save file (if it already exists an error will show if you enter it here)? ")
 			sure = input("\nAre you sure about this (y/n)?").lower()
 			if sure == "y":
-				open(save+".json", "x")
-				with open(save+".json", 'w') as f:
-					json.dump(place, f)
-					#dumps chapters into newly made json file
-				break
+				if not os.path.exists(save):
+					os.makedirs(save)
+					with open(save + "/" + save + ".json", 'w') as f:
+						json.dump(place, f)
+					with open(save + "/inventory.json", 'w') as f:
+						json.dump(inventory, f)
+					break
+				else:
+					print("Exception: Save file name already exists!")
+					continue
 			elif sure == "n":
 				print("Alright, I'll ask again\n\n")
 				continue
