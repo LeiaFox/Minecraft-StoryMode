@@ -11,37 +11,33 @@ olivia2 = colored("Olivia","red")
 axel = colored("\nAxel:","green")
 reuben = colored("\nReuben:","magenta")
 
-
+def clear_screen():
+    if sys.platform == 'win32':
+        os.system('cls')
+    else:
+        os.system('clear')
 
 #places you at the part you were at, or at the start
 def load_game():
 	global f
+	global f2
 	global place
 	global load
 	global loadinv
 	global inventory
-	global fread
-	global f2read
 	
-	f = open(save + "/" + save + ".json", 'w')
-	f2 = open(save + "/inventory.json", 'w')
-	fread = open(save + "/" + save + ".json")
-	f2read = open(save + "/inventory.json")
-
+	f = open(save + "/" + save + ".json")
+	f2 = open(save + "/inventory.json")
+	
 	filesize = (os.path.getsize(save + "/" + save + ".json") + os.path.getsize(save + "/inventory.json"))
 	if filesize != 0:
-		load = json.loads(fread.read())
-		loadinv = json.loads(f2read.read())
+		load = json.loads(f.read())
+		loadinv = json.loads(f2.read())
 	
 	if load["episode"] == 1:
 		if load["part"] == 1:
 			inventory = loadinv
-			place = {}
-			place["episode"] = 1
-			place["part"] = 1			
-			place["zombiesizedchicken"] = load["zombiesizedchicken"]
-			place["chickensizedzombie"] = load["chickensizedzombie"]
-			json.dump(place, f)
+			place = load
 			chapter_1_part_1()
 
 
@@ -93,7 +89,7 @@ def chapter_1_part_1():
 	os.system('clear')
 	print(intro_speech)
 	time.sleep(20.0)
-
+	
 	print("Chapter 1, Part 1\n")
 
 	while True:
@@ -108,8 +104,8 @@ def chapter_1_part_1():
 			print(olivia,"'It's just a dumb question. Forget it.'")
 			break
 		elif zombieorchicken == "2":
-			place["zombiesizedchicken"]=0
-			place["chickensizedzombie"]=1
+			place["zombiesizedchicken"]=False
+			place["chickensizedzombie"]=True
 			with open(save + "/" + save + ".json", 'w') as f:
 				json.dump(place, f)
 			print("\n'That's easy. I'll take the little tiny... little zombies.'")
@@ -119,8 +115,8 @@ def chapter_1_part_1():
 			print("\n'All I'd need is, like, a shovel. I'm telling you, way too easy.'")
 			break
 		elif zombieorchicken == "3":
-			place["zombiesizedchicken"]=1
-			place["chickensizedzombie"]=0
+			place["zombiesizedchicken"]=True
+			place["chickensizedzombie"]=False
 			with open(save + "/" + save + ".json", 'w') as f:
 				json.dump(place, f)
 			print("\n'I'd have to go with the giant chickens. Not because I want to or because I think it would be easy, but because they would be an abomination.'")
@@ -213,7 +209,7 @@ def chapter_1_part_1():
 			break
 		elif losers == "3":
 			time.sleep(4.0)
-			print("\n'We are not loser, Olivia'")
+			print("\n'We are not losers, Olivia'")
 			time.sleep(4.0)
 			print(f"{olivia} 'We lose all the time. It's what we do.'")
 			time.sleep(4.0)
@@ -282,6 +278,8 @@ def chapter_1_part_1():
 			print(f"{axel} 'Nothing is fun if you're not scared half to death.'")
 			break
 		elif axel_intro == "4":
+			print("\n'...'")
+			time.sleep(4.0)
 			break
 	time.sleep(4.0)
 	print(f"{olivia} 'Did you bring the fireworks?'")
@@ -312,6 +310,8 @@ def chapter_1_part_1():
 		elif reuben_looks == "3":
 			break
 		elif reuben_looks == "4":
+			print("\n'...'")
+			time.sleep(4.0)
 			break
 	time.sleep(4.0)
 	print(f"{olivia} 'You definetely brought the fireworks right?'")
@@ -324,38 +324,123 @@ def chapter_1_part_1():
 	time.sleep(4.0)
 	print("\n'Okay!' You then begin ''grabbing your stuff''.")
 	time.sleep(4.0)
-	while True:
-		grabbing_stuff = input(f"\nWhat would you like to look at (type 'E' to check inventory)? \n\n[1: Chest to the left of the tree house. 2: Gabriel banner. 3: Chest below the tree house window. 4: Banner with a pear on it that says 'E C'. 5: Armor stand with a pumpkin head on it. 6: Reuben.] ").lower()
-		if grabbing_stuff == "1":
-			print("\nYou walk up to the chest and begin scrambling inside. 'Hm. Flint and steel, not too shabby'")
-			time.sleep(4.0)
 
-			inventory.update({"flint_and_steel" : 1})
-			json.dump(inventory, f2)
-			
+	done_1 = False
+	done_2 = False
+	done_3 = False
+	done_4 = False
+	done_5 = False
+	done_6 = False
+	
+	while True:
+		grabbing_stuff = input(f"\nWhat would you like to look at (type 'E' to check inventory)? \n\n[1: Chest to the left of the tree house. 2: Gabriel banner. 3: Chest below the tree house window. 4: Banner with a pear on it that says 'E C'. 5: Armor stand with a pumpkin head on it. 6: Reuben.] Type 'exit' to exit. ").lower()
+		
+		if grabbing_stuff == "1":
+			if done_1 == False:
+				print("\nYou walk up to the chest and begin scrambling inside. 'Hm. Flint and steel, not too shabby'")
+				time.sleep(4.0)
+				inventory.update({"flint_and_steel" : 1})
+				with open(save + "/inventory.json", 'w') as f:
+					json.dump(inventory, f)
+				done_1 = True
+			else:
+				print("You've already looked at this!")
 			continue
 		elif grabbing_stuff == "2":
-			print("\nYou walk up to the banner. 'Gabriel the warror. You think we'll ever get that famous?' you turn to look at Reuben")
-			time.sleep(4.0)
-			print("\n'It's not impossible... maybe I'll get famous for my sweet poster collection.'")
-			time.sleep(4.0)
+			
+			if done_2 == False:
+				print("\nYou walk up to the banner. 'Gabriel the warror. You think we'll ever get that famous?' you turn to look at Reuben")
+				time.sleep(4.0)
+				print("\n'It's not impossible... maybe I'll get famous for my sweet poster collection.'")
+				time.sleep(4.0)
+				done_2 = True
+			else:
+				print("You've already looked at this!")
 			continue
 		elif grabbing_stuff == "3":
+			
+			if done_3 == False:
+				print("\nYou walk up to the chest and begin scrambling inside. 'Shears. Definetely taking these. Never know when I might need to shear some sheep.'")
+				time.sleep(4.0)
+				inventory.update({"shears" : 1})
+				with open(save + "/inventory.json", 'w') as f:
+					json.dump(inventory, f)
+				done_3 = True
+			else:
+				print("You've already looked at this!")
 			continue
 		elif grabbing_stuff == "4":
-			print("\nYou walk up to the banner. 'One of these days we're going to win the Endercon building competition.' You turn to look at Reuben.")
-			time.sleep(4.0)
-			print("\n'And when we do, people will look at us and say, ''Hey, there goes Jesse and Reuben, winners of the Endercon Building Competition''... '")
-			time.sleep(4.0)
+			
+			if done_4 == False:
+				print("\nYou walk up to the banner. 'One of these days we're going to win the Endercon building competition.' You turn to look at Reuben.")
+				time.sleep(4.0)
+				print("\n'And when we do, people will look at us and say, ''Hey, there goes Jesse and Reuben, winners of the Endercon Building Competition''... '")
+				time.sleep(4.0)
+				done_4 = True
+			else:
+				print("You've already looked at this!")
 			continue
 		elif grabbing_stuff == "5":
-			print("\nYou walk up to the armor stand. 'I got this stand as a gift, but don't have any armor to put on it. Maybe someday.'")
-			time.sleep(4.0)
+
+			if done_5 == False:
+				print("\nYou walk up to the armor stand. 'I got this stand as a gift, but don't have any armor to put on it. Maybe someday.'")
+				time.sleep(4.0)
+				done_5 = True
+			else:
+				print("You've already looked at this!")
 			continue
-		elif grabbing_stuff == "E":
+		elif grabbing_stuff == "6":
+
+			if done_6 == False:
+				print("\nYou kneel down to Reuben's level.")
+				time.sleep(4.0)
+				print("\n'Gimme a dragon roar, Reuben.'")
+				time.sleep(4.0)
+				print("\nReuben squeals.")
+				time.sleep(4.0)
+				print("\n'That'll do Reuben, that'll do.")
+				time.sleep(4.0)
+			else:
+				print("\nYou've already looked at this!")
+			continue
+		elif grabbing_stuff == "e":
+			
 			print(f"\nInventory:\n{inventory}")
 			print(f"\n\nplaceholder\n{place}")
-	exit(0)
+			time.sleep(4.0)
+			continue
+		elif grabbing_stuff == "exit":
+			break
+			
+	print("\nReuben runs around you in a ring. You stop his wrath by grabbing him, and carrying him with you down the tree house.")
+	time.sleep(4.0)
+	print("\nAxel and Olivia are waiting for you at the bottom.")
+	time.sleep(4.0)
+	print(f"\n{olivia} 'That's everything.")
+	time.sleep(4.0)
+	print(f"\n{axel} 'Let's roll.' He punches his fist in the air.")
+	time.sleep(4.0)
+	print(f"\n{olivia} 'Yeah. Dude. Roll.' This is very clearly judgemental.")
+	time.sleep(4.0)
+	print(f"\n'Let's go.' You command everyone.")
+	time.sleep(4.0)
+	print("\nEveryone begins walking to the competition now.")
+	time.sleep(4.0)
+	print(f"\n{axel} 'I heard a pretty juicy rumor about the building competition, but you guys have to promise not to say anything.' ")
+	time.sleep(4.0)
+	print(f"\n{olivia} 'Okay.' ")
+	time.sleep(4.0)
+	print(f"\n{axel} 'Also, it's in two parts, each part more exciting than the last!")
+	time.sleep(4.0)
+	print(f"\n'Spit it out Axel.' You eyebrows burrow.")
+	time.sleep(4.0)
+	print(f"\n{axel} 'Part one. The special guest at this year's Endercon is none other than Gabriel the Warrior him-freaking-self!' ")
+	time.sleep(4.0)
+	print(f"\n'Whoa! What's part two?!' ")
+	time.sleep(4.0)
+	print(f"\n{axel} 'Part two. According to my sources, the winner of the building competition's gonna meet him!' ")
+	time.sleep(4.0)
+	print(f"\n{axel} 'It's not gonna mean anything if we lose.' ")
 #CHAPTER 1 PART 1
 
 
@@ -389,6 +474,7 @@ while True:
 		place["episode"] = 1
 		place["part"] = 1
 		inventory = {}
+		inventory.update({"wooden_sword" : 1})
 		while True:
 			save = input("\n\nWhat do you want to name your save file (if it already exists an error will show if you enter it here)? ")
 			sure = input("\nAre you sure about this (y/n)?").lower()
