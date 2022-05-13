@@ -11,6 +11,7 @@ olivia2 = colored("Olivia","red")
 axel = colored("\nAxel:","green")
 reuben = colored("\nReuben:","magenta")
 
+#clears your screen depending on your OS
 def clear_screen():
     if sys.platform == 'win32':
         os.system('cls')
