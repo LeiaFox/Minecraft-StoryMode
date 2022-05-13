@@ -279,7 +279,6 @@ def chapter_1_part_1():
 			break
 		elif axel_intro == "4":
 			print("\n'...'")
-			time.sleep(4.0)
 			break
 	time.sleep(4.0)
 	print(f"{olivia} 'Did you bring the fireworks?'")
@@ -293,7 +292,7 @@ def chapter_1_part_1():
 	print(f"{axel} 'We're going to a convention. SOMEbody's gotta wear a costume.' Axel stuffs the costume onto Reuben, Reuben runs around in enjoyment.")
 	time.sleep(4.0)
 	while True:
-		reuben_looks = input(f"\n[1: 'If he's happy, I'm happy.' 2: 'He looks awesome!' 3: 'He looks ridiculous.' 4: '...'] ")
+		reuben_looks = input(f"\n\n[1: 'If he's happy, I'm happy.' 2: 'He looks awesome!' 3: 'He looks ridiculous.' 4: '...'] ")
 		if reuben_looks == "1":
 			print("\n'As long as Reuben's happy, I'm happy.' Reuben is joyfully dashing around the room in his awesome dragon costume")
 			time.sleep(4.0)
@@ -311,7 +310,6 @@ def chapter_1_part_1():
 			break
 		elif reuben_looks == "4":
 			print("\n'...'")
-			time.sleep(4.0)
 			break
 	time.sleep(4.0)
 	print(f"{olivia} 'You definetely brought the fireworks right?'")
@@ -336,6 +334,7 @@ def chapter_1_part_1():
 		grabbing_stuff = input(f"\nWhat would you like to look at (type 'E' to check inventory)? \n\n[1: Chest to the left of the tree house. 2: Gabriel banner. 3: Chest below the tree house window. 4: Banner with a pear on it that says 'E C'. 5: Armor stand with a pumpkin head on it. 6: Reuben.] Type 'exit' to exit. ").lower()
 		
 		if grabbing_stuff == "1":
+			
 			if done_1 == False:
 				print("\nYou walk up to the chest and begin scrambling inside. 'Hm. Flint and steel, not too shabby'")
 				time.sleep(4.0)
@@ -416,37 +415,125 @@ def chapter_1_part_1():
 	time.sleep(4.0)
 	print("\nAxel and Olivia are waiting for you at the bottom.")
 	time.sleep(4.0)
-	print(f"\n{olivia} 'That's everything.")
+	print(f"{olivia} 'That's everything.")
 	time.sleep(4.0)
-	print(f"\n{axel} 'Let's roll.' He punches his fist in the air.")
+	print(f"{axel} 'Let's roll.' He punches his fist in the air.")
 	time.sleep(4.0)
-	print(f"\n{olivia} 'Yeah. Dude. Roll.' This is very clearly judgemental.")
+	print(f"{olivia} 'Yeah. Dude. Roll.' This is very clearly judgemental.")
 	time.sleep(4.0)
 	print(f"\n'Let's go.' You command everyone.")
 	time.sleep(4.0)
 	print("\nEveryone begins walking to the competition now.")
 	time.sleep(4.0)
-	print(f"\n{axel} 'I heard a pretty juicy rumor about the building competition, but you guys have to promise not to say anything.' ")
+	print(f"{axel} 'I heard a pretty juicy rumor about the building competition, but you guys have to promise not to say anything.' ")
 	time.sleep(4.0)
-	print(f"\n{olivia} 'Okay.' ")
+	print(f"{olivia} 'Okay.' ")
 	time.sleep(4.0)
-	print(f"\n{axel} 'Also, it's in two parts, each part more exciting than the last!")
+	print(f"{axel} 'Also, it's in two parts, each part more exciting than the last!")
 	time.sleep(4.0)
 	print(f"\n'Spit it out Axel.' You eyebrows burrow.")
 	time.sleep(4.0)
-	print(f"\n{axel} 'Part one. The special guest at this year's Endercon is none other than Gabriel the Warrior him-freaking-self!' ")
+	print(f"{axel} 'Part one. The special guest at this year's Endercon is none other than Gabriel the Warrior him-freaking-self!' ")
 	time.sleep(4.0)
 	print(f"\n'Whoa! What's part two?!' ")
 	time.sleep(4.0)
-	print(f"\n{axel} 'Part two. According to my sources, the winner of the building competition's gonna meet him!' ")
+	print(f"{axel} 'Part two. According to my sources, the winner of the building competition's gonna meet him!' ")
 	time.sleep(4.0)
-	print(f"\n{axel} 'It's not gonna mean anything if we lose.' ")
+	print(f"{axel} 'It's not gonna mean anything if we lose.' ")
+	time.sleep(4.0)
+	print(f"{axel} 'But if we win...oh man, this would make up for all the losing.' ")
+	time.sleep(4.0)
+	while True:
+		winforlosing = input(f"\n\n[1: 'I wish the rest of the were there.' 2: 'It's not a big deal, is it?' 3: 'I'd love to meet Gabriel!' 4: '...'] ")
+		if winforlosing == "1":
+			print(f"\n'I wish they were all going to be there.' ")
+			time.sleep(4.0)
+			print(f"\n{axel} 'Does nothing please you?! You have to meet ALL of the super secret, super legendary Order of the Stone?'")
+			time.sleep(4.0)
+			print(f"\n'I wasn't saying it wasn't cool. I was just saying, that would be cool -- too.' ")
+			break
+		elif winforlosing == "2":
+			break
+		elif winforlosing == "3":
+			break
+		elif winforlosing == "4":
+			print("\n'...'")
+			break
+			
+	time.sleep(4.0)
+	print(f"{olivia} 'Soooo, does this ''source'' of yours make posters for a living?'")
+	time.sleep(4.0)
+	print(f"{axel} 'Huh?' All of you stumble upon a forest full of posters with Gabriels face on them, along with other neat designs. You deduct this is how Axel knew all this.")
+	time.sleep(4.0)
+	print(f"{axel} 'Yeah. My source, uhhh, doesn't... uh... exist. You guys are my only friends.'")
+	time.sleep(4.0)
+	print(f"\n'Guys, lets stay focused. We have a competition to win.'")
+	time.sleep(4.0)
+	print(f"{olivia} 'We never win. And this year we've got Reuben with us.'")
+	time.sleep(4.0)
+	print(f"{olivia} 'We basically have no chance.'")
+	time.sleep(4.0)
+	while True:
+		winforlosing = input(f"\n\n[1: 'We'll win this time.' 2: 'Have a little faith, Olivia' 3: 'Anything can happen.' 4: '...'] ")
+		if winforlosing == "1":
+			
+			break
+		elif winforlosing == "2":
+			print(f"\n'Have a little faith, Olivia.'")
+			time.sleep(4.0)
+			print(f"{olivia} 'What?'")
+			time.sleep(4.0)
+			print(f"\n'A little slice. A sliver. A portion. Just a little faith. That's all we need. Also, I'm hungry. To win' ")
+			time.sleep(4.0)
+			print(f"{axel} 'No, no. I'm with that.' ")
+			time.sleep(4.0)
+			print(f"{olivia} 'All right.' She has a worried smile.")
+			break
+		elif winforlosing == "3":
+			break
+		elif winforlosing == "4":
+			print("\n'...'")
+			break
+	time.sleep(4.0)
+	print(f"\n'Wait a minute...wait a minute...we're thinking about this all wrong.' ")
+	time.sleep(4.0)
+	print(f"\n'The point of the building competition isn't just to build something. You have to get noticed by the judges.' ")
+	time.sleep(4.0)
+	print(f"{olivia} 'Okay, then. So how do we do this?'")
+	time.sleep(4.0)
+	print(f"\n'We don't just build something functional. We build something fun.' ")
+	time.sleep(4.0)
+	print(f"\n'After we finish the fireworks machine, like we planned -- then we build something cool on top of it.' ")
+	time.sleep(4.0)
+	print(f"{olivia} 'You might be onto something.' ")
+	time.sleep(4.0)
+	print(f"{axel} 'If you wanna build something to get a reaction out of the judges, you build something scary. So I say we build a creeper...' ")
+	time.sleep(4.0)
+	print(f"{olivia} 'Wouldn't an enderman be better? I'm more scared of enderman than creepers.' ")
+	time.sleep(4.0)
+	print(f"{axel} 'They both have their moments. Both pretty scary.' ")
+	time.sleep(4.0)
+	print(f"{olivia} 'Then again, you scared the crap out of us with a creeper today.' ")
+	time.sleep(4.0)
+	while True:
+		winforlosing = input(f"\n\n[1: 'How about a zombie?' 2: 'Enderman are cool' 3: 'Let's build a creeper!' 4: '...'] ")
+		if winforlosing == "1":
+			break
+		elif winforlosing == "2":
+			break
+		elif winforlosing == "3":
+			break
+		elif winforlosing == "4":
+			print("\n'...'")
+			break
+	time.sleep(4.0)
 #CHAPTER 1 PART 1
 
 
 
 #below is the first thing people see
-print('''					***	MINECRAFT STORYMODE	***
+print('''
+					***	MINECRAFT STORYMODE	***
 
 Welcome player to a version of minecraft storymode runnable entirely in replit
 
