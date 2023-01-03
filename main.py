@@ -102,8 +102,8 @@ def chapter_1_part_1():
 		time.sleep(8.0)
 		zombieorchicken = input(f"{olivia} 'Would you rather fight a hundred chicken-sized zombies, or ten zombie-sized chickens? Just to be clear, you wouldn't have any weapons or armor. So you'd have to fight them with your hands.' \n\n[1: 'Huh?' 2: 'Chicken-sized zombies.' 3: 'Zombie-sized chickens.' 4: '...'] ")
 		if zombieorchicken == "1":
-            place["zombiesizedchicken"]=False
-            place["chickensizedzombie"]=False
+			place["zombiesizedchicken"]=False
+			place["chickensizedzombie"]=False
 			with open(save + "/" + save + ".json", 'w') as f:
 				json.dump(place, f)
 			print("\n'Huh?'")
@@ -135,8 +135,8 @@ def chapter_1_part_1():
 			print("\n'Like I said... an abomination.'")
 			break
 		elif zombieorchicken == "4":
-            place["zombiesizedchicken"]=False
-            place["chickensizedzombie"]=False
+			place["zombiesizedchicken"]=False
+			place["chickensizedzombie"]=False
 			with open(save + "/" + save + ".json", 'w') as f:
 				json.dump(place, f)
 			print("\n'...'")
@@ -241,7 +241,6 @@ def chapter_1_part_1():
 			wait()
 			print(f"{olivia} 'Glad I have a friend like you around.' She says this while unamused and blankly staring")
 			break
-
 	wait()
 	print("\n???: 'Ssssssss...'")
 	wait()
@@ -592,6 +591,9 @@ print('''
 					***	MINECRAFT STORYMODE	***
 
 Welcome player to a version of minecraft storymode runnable entirely in replit
+
+please note: it is very likely saving and loading doesn't work unless you 
+create a branch of this
 
 This is not complete, but once it is it will include saving, loading, every chapter,
 and slightly branching paths, although generally no matter what you do the outcome 
